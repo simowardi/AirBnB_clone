@@ -15,7 +15,7 @@ from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     """ HBNBCommand class for airbnb console """
-    prompt = "hbnb>"
+    prompt = "hbnb"
 
     def _EOF(self, line):
         """End of file = CTRL+D to exit the program"""
