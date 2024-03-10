@@ -33,4 +33,3 @@ my_user2.email = "sofia233bnb@mail.com"
 my_user2.password = "sofia123tt"
 my_user2.save()
 print(my_user3)
-
