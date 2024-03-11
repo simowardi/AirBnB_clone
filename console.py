@@ -17,6 +17,8 @@ from models.review import Review
 # Constants
 PROMPT = '(hbnb) '
 
+# need create & show & update & destroy & all
+
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand class for airbnb console"""
@@ -26,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
     cmds_models = ["BaseModel", "User", "State", "City", "Amenity",
                    "Place", "Review"]
 
-    cmds_name = ["create", "show", "update", "destroy", "all", "count"]
+    cmds_name = ["create", "show", "update", "destroy", "all"]
 
     def parse_command_input(self, raw):
         """Parse Command Input
