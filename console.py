@@ -15,7 +15,12 @@ from models.place import Place
 from models.review import Review
 
 # Constants
-PROMPT = '(hbnb) '
+PROMPT = "(hbnb) "
+ERROR_CLASS_MISSING = "** class name missing **"
+ERROR_CLASS_DOESNT_EXIST = "** class doesn\'t exist **"
+ERROR_INSTANCE_ID_MISSING = "** instance id missing **"
+ERROR_INSTANCE_NOT_FOUND = "** no instance found **"
+ERROR_VALUE_MISSING = "** value missing **"
 
 # need create & show & update & destroy & all
 
@@ -25,10 +30,10 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = PROMPT
 
-    cmds_models = ["BaseModel", "User", "State", "City", "Amenity",
+    models = ["BaseModel", "User", "State", "City", "Amenity",
                    "Place", "Review"]
 
-    cmds_name = ["create", "show", "update", "destroy", "all"]
+    cmds_names = ["create", "show", "update", "destroy", "all"]
 
     def parse_command_input(self, raw):
         """Parse Command Input
@@ -71,6 +76,28 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """a fun that pass if empty line is entered by user"""
         pass
+
+    def do_create(self, model_name):
+        """Create New Instance
+        Description:
+        Creates a new instance of a model, saves it in the
+        JSON file, and prints its ID to the console.
+        Args:
+        model_name (str): the type of model to create
+        """
+
+        if not model_name:
+            print(ERROR_CLASS_MISSING)
+        elif model_name not in HBNBCommand.models:
+            print(ERROR_CLASS_DOESNT_EXIST)
+        else:
+            dict_models = {"BaseModel": BaseModel, "User": User,
+                           "State": State, "City": City, "Amenity": Amenity,
+                           "Place": Place, "Review": Review}
+
+            obj_model = dict_models[model_name]()
+            print(obj_model.id)
+            obj_model.save()
 
 
 if __name__ == '__main__':
