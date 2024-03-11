@@ -4,18 +4,21 @@ import models
 from uuid import uuid4
 from datetime import datetime
 
+
 class BaseModel:
     """
-    Defines all common attributes and methods 
+    Defines all common attributes and methods
     for other classes in the BaseModel of the HBnB project.
     """
+
     def __init__(self, *args, **kwargs):
-        """ 
-        A new BaseModel Initialization.
-	Args:
-            *args (any): Unused.
-            **kwargs (dict): Key/value pairs of attributes.
         """
+        A new BaseModel Initialization.
+        Args:
+        *args (any): Unused.
+        **kwargs (dict): Key/value pairs of attributes.
+        """
+
         timeform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.today()
