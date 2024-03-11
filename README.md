@@ -10,7 +10,6 @@ create all classes used for AirBnB (User, State, City, Place) that inherit from 
 create the first abstracted storage engine of the project: File storage.
 create all unittests to validate all our classes and storage engine
 
-Description
 This project is part of the AirBnB clone project, which aims to create a command-line interpreter (CLI) to manage AirBnB objects. The CLI provides users with a text-based interface to interact with the system, allowing them to perform various tasks and operations such as creating, updating, and deleting objects such as Users, States, Cities, and Places. This serves as a crucial foundation for the subsequent development of a full-fledged web application.
 
 Command Interpreter
