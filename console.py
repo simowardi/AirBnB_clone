@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """Module for command line interface implementation"""
-# Constants
-PROMPT = '(hbnb) '
 
 import cmd
 import json
@@ -16,40 +14,40 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+# Constants
+PROMPT = '(hbnb) '
 
 
 class HBNBCommand(cmd.Cmd):
-    """ HBNBCommand class for airbnb console """
-    
-    """Implementation of command line interface"""
+    """HBNBCommand class for airbnb console"""
+
     prompt = PROMPT
 
-    models_name = ["BaseModel", "User", "State", "City", "Amenity",
+    cmds_models = ["BaseModel", "User", "State", "City", "Amenity",
                    "Place", "Review"]
+
     cmds_name = ["create", "show", "update", "destroy", "all", "count"]
 
-    def parse_command_input(self, raw_cmd):
+    def parse_command_input(self, raw):
         """Parse Command Input
         Description:
         Parses the command input to handle compound commands
         like "ClassName.command()".
         Args:
-        raw_cmd (str): The original input command.
-
+        raw (str): The original input command.
         Returns:
         str: The modified argument.
         """
-        if "." in raw_cmd and "(" in raw_cmd and ")" in raw_cmd:
-            class_cmd = raw_cmd.split(".")
-            cmd_args = class_cmd[1].split("(")
-            args_list = cmd_args[1].split(")")
+        if "." in raw and "(" in raw_cmd and ")" in raw_cmd:
+            class_c = raw.split(".")
+            c = class_c[1].split("(")
+            args_list = c[1].split(")")
 
-            if class_cmd[0] in HBNBCommand.cmds_models and cmd_args[0] in HBNBCommand.cmds:
+            if class_c[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds:
                 # Modify the argument accordingly
-                raw_cmd = cmd_args[0] + " " + class_cmd[0] + " " + args_list[0]
+                raw = c[0] + " " + class_c[0] + " " + args_list[0]
 
         return raw_cmd
-
 
     def do_EOF(self, line):
         """End of file = CTRL+D to exit the program"""
@@ -71,6 +69,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """a fun that pass if empty line is entered by user"""
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
