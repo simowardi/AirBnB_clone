@@ -10,6 +10,7 @@ class BaseModel:
     Defines all common attributes and methods
     for other classes in the BaseModel of the HBnB project.
     """
+
     def __init__(self, *args, **kwargs):
         """
         A new BaseModel Initialization.
@@ -21,13 +22,12 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-
         if len(kwargs) != 0:
-            for key, value in kwargs.items():
+            for key, val in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    self.__dict__[key] = datetime.strptime(value, timeform)
+                    self.__dict__[key] = datetime.strptime(val, timeform)
                 else:
-                    self.__dict__[key] = value
+                    self.__dict__[key] = val
         else:
             models.storage.new(self)
 
@@ -46,9 +46,7 @@ class BaseModel:
         Returns:
         A string of this model instance.
         """
-
-        strng = f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
-        return strng
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def to_dict(self):
         """
