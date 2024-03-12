@@ -33,7 +33,7 @@ class BaseModel:
 
     def save(self):
         """
-        This method tracks the date the instance object was updated
+        Tracks the date the instance object was last updated.
         """
         self.updated_at = datetime.today()
         models.storage.save()
@@ -46,7 +46,8 @@ class BaseModel:
         Returns:
         A string of this model instance.
         """
-        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__)
 
     def to_dict(self):
         """
