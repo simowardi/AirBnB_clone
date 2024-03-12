@@ -17,12 +17,11 @@ class BaseModel:
         *args (any): Unused.
         **kwargs (dict): Key/value pairs of attributes.
         """
-
-        from models import storage
-
         timeform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
-        self.created_at = self.updated_at = datetime.now()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -30,16 +29,14 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
         else:
-            storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         """
         This method tracks the date the instance object was updated
         """
-        from models import storage
-
         self.updated_at = datetime.today()
-        storage.save()
+        models.storage.save()
 
     def __str__(self):
         """
@@ -50,12 +47,12 @@ class BaseModel:
         A string of this model instance.
         """
 
-        string = f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
-        return string
+        strng = f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+        return strng
 
     def to_dict(self):
-        """Return the dictionary of the BaseModel instance.
-
+        """
+        Return the dictionary of the BaseModel instance.
         Includes the key/value pair __class__ representing
         the class name of the object.
         """
