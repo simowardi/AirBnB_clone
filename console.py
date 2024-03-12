@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = PROMPT
 
-    cmds_models = ["BaseModel", "User", "State", "City", "Amenity",
+    models = ["BaseModel", "User", "State", "City", "Amenity",
                    "Place", "Review"]
     cmds_names = ["create", "show", "update", "destroy", "all"]
 
@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
 
             model = model_name.split(" ")
 
-            if model[0] not in HBNBCommand.cmds_models:
+            if model[0] not in HBNBCommand.models:
                 print(ERROR_CLASS_DOESNT_EXIST)
 
             elif len(model) == 1:
@@ -144,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
 
         model = model_name.split(" ")
 
-        if model[0] not in HBNBCommand.cmds_models:
+        if model[0] not in HBNBCommand.models:
             print(ERROR_CLASS_DOESNT_EXIST)
 
         elif len(model) == 1:
@@ -178,7 +178,7 @@ class HBNBCommand(cmd.Cmd):
 
         model = model_name.split(" ")
 
-        if model[0] not in HBNBCommand.cmds_models:
+        if model[0] not in HBNBCommand.models:
             print(ERROR_CLASS_DOESNT_EXIST)
 
         else:
@@ -210,7 +210,7 @@ class HBNBCommand(cmd.Cmd):
 
         model = shlex.split(argv)
 
-        if model[0] not in HBNBCommand.cmds_models:
+        if model[0] not in HBNBCommand.models:
             print(ERROR_CLASS_DOESNT_EXIST)
 
         elif len(model) == 1:
@@ -219,7 +219,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             all_objcts = storage.all()
 
-            for key, val in all_objs.items():
+            for key, val in all_objcts.items():
                 ob_name = val.__class__.__name__
                 ob_id = val.id
 
@@ -235,7 +235,6 @@ class HBNBCommand(cmd.Cmd):
                         return
 
             print(ERROR_INSTANCE_NOT_FOUND)
-
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
