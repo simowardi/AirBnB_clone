@@ -31,11 +31,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = PROMPT
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
-                   "Place", "Review"]
+              "Place", "Review"]
     cmds_names = ["create", "show", "update", "destroy", "all"]
 
     def parse_command_input(self, raw):
-        """Parse Command Input
+        """
+        Parse Command Input
         Description:
         Parses the command input to handle compound commands
         like "ClassName.command()".
@@ -132,7 +133,8 @@ class HBNBCommand(cmd.Cmd):
                 print(ERROR_INSTANCE_NOT_FOUND)
 
     def do_show(self, model_name):
-        """Print Instances
+        """
+        Print Instances
         Description:
         Show by print a string representation of an instance based
         on the model name and id.
@@ -235,6 +237,7 @@ class HBNBCommand(cmd.Cmd):
                         return
 
             print(ERROR_INSTANCE_NOT_FOUND)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
