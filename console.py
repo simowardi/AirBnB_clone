@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
               "Place", "Review"]
     cmds_names = ["create", "show", "update", "destroy", "all"]
 
-    def parse_command_input(self, raw):
+    def parse_cmd_in(self, raw):
         """
         Parse Command Input
         Description:
