@@ -125,6 +125,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, model_name):
         """
+        Delete Instance
+        Description:
         Destroy & delete an instance based model's name and id
         model_name : the model's name and id
         """
@@ -136,6 +138,7 @@ class HBNBCommand(cmd.Cmd):
 
         if model[0] not in HBNBCommand.models:
             print(ERROR_CLASS_DOESNT_EXIST)
+
         elif len(model) == 1:
             print(ERROR_INSTANCE_ID_MISSING)
 
