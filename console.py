@@ -138,28 +138,27 @@ class HBNBCommand(cmd.Cmd):
             print(ERROR_CLASS_MISSING)
             return
 
-            model = model_name.split(" ")
+        model = model_name.split(" ")
 
-            if model[0] not in HBNBCommand.models:
-                print(ERROR_CLASS_DOESNT_EXIST)
+        if model[0] not in HBNBCommand.models:
+            print(ERROR_CLASS_DOESNT_EXIST)
+        elif len(model) == 1:
+            print(ERROR_INSTANCE_ID_MISSING)
 
-            elif len(model) == 1:
-                print(ERROR_INSTANCE_ID_MISSING)
+        else:
+            all_objcts = storage.all()
 
-            else:
-                all_objcts = storage.all()
+            for key, val in all_objcts.items():
+                ob_name = val.__class__.__name__
+                ob_id = val.id
 
-                for key, val in all_objcts.items():
-                    ob_name = val.__class__.__name__
-                    ob_id = val.id
+                if ob_name == model[0] and ob_id == model[1].strip('"'):
+                    del val
+                    del storage._FileStorage__objects[key]
+                    storage.save()
+                    return
 
-                    if ob_name == model[0] and ob_id == model[1].strip('"'):
-                        del val
-                        del storage._FileStorage__objects[key]
-                        storage.save()
-                        return
-
-                print(ERROR_INSTANCE_NOT_FOUND)
+            print(ERROR_INSTANCE_NOT_FOUND)
 
     def do_all(self, model_name):
         """
