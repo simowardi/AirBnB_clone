@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             c = clss[1].split("(")
             args_list = c[1].split(")")
 
-            if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds_name:
+            if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds_names:
                 raw = c[0] + " " + clss[0] + " " + args_list[0]
 
         return raw
