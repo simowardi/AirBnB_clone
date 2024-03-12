@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 
 class User(BaseModel):
     """
+    Creates a new user which inherits from the BaseModel
     User attribute:
         email (str): The user email.
         password (str): The user password.

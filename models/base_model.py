@@ -10,7 +10,6 @@ class BaseModel:
     Defines all common attributes and methods
     for other classes in the BaseModel of the HBnB project.
     """
-
     def __init__(self, *args, **kwargs):
         """
         A new BaseModel Initialization.
@@ -19,10 +18,11 @@ class BaseModel:
         **kwargs (dict): Key/value pairs of attributes.
         """
 
+        from models import storage
+
         timeform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
-        self.created_at = datetime.today()
-        self.updated_at = datetime.today()
+        self.created_at = self.updated_at = datetime.now()
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -30,7 +30,16 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
         else:
-            models.storage.new(self)
+            storage.new(self)
+
+    def save(self):
+        """
+        This method tracks the date the instance object was updated
+        """
+        from models import storage
+
+        self.updated_at = datetime.today()
+        storage.save()
 
     def __str__(self):
         """
@@ -40,15 +49,9 @@ class BaseModel:
         Returns:
         A string of this model instance.
         """
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
 
-    def save(self):
-        """
-        This method tracks the date the instance object was updated
-        """
-        self.updated_at = datetime.today()
-        models.storage.save()
+        string = f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+        return string
 
     def to_dict(self):
         """Return the dictionary of the BaseModel instance.

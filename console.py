@@ -36,8 +36,6 @@ class HBNBCommand(cmd.Cmd):
 
     def parse_cmd_in(self, raw):
         """
-        Parse Command Input
-        Description:
         Parses the command input to handle compound commands
         like "ClassName.command()".
         raw (str): The original input command.
@@ -49,7 +47,6 @@ class HBNBCommand(cmd.Cmd):
             args_list = c[1].split(")")
 
             if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds_name:
-                # Modify the argument accordingly
                 raw = c[0] + " " + clss[0] + " " + args_list[0]
 
         return raw
@@ -72,8 +69,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, model_name):
-        """Create New Instance
-        Description:
+        """
         Creates a new instance of a model, saves it in the
         JSON file, and prints its ID to the console.
         model_name (str): the type of model to create
@@ -94,8 +90,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, model_name):
         """
-        Print Instances
-        Description:
         Show by print a string representation of an instance based
         on the model name and id.
         model_name (model): the model's name and id
@@ -127,8 +121,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, model_name):
         """
-        Delete Instance
-        Description:
         Destroy & delete an instance based model's name and id
         model_name : the model's name and id
         """
@@ -160,8 +152,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, model_name):
         """
-        Print All Instances
-        Description:
         Prints the string representation of all instances of a
         given model. In the absence of a model,
         it prints all instances of all models.
@@ -189,8 +179,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, model_name):
         """
-        Update Instance Attributes
-        Description:
         Updates the attributes of an instance of a given model
         based on the model's name and id
         model_name : the name and id of a given model
