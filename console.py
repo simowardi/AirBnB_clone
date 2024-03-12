@@ -61,17 +61,13 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
-    def help_EOF(self):
-        """ Prints the help documentation for EOF """
-        print("Exits the program without formatting\n")
-
     def do_quit(self, line):
         """a fun that exit the program\n"""
         return True
 
     def help_quit(self):
         """ Prints the help documentation for quit  """
-        print("Exits the program with formatting\n")
+        print("Quit command to exit the program\n")
 
     def emptyline(self):
         """a fun that pass if empty line is entered by user"""
