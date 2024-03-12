@@ -98,6 +98,39 @@ class HBNBCommand(cmd.Cmd):
             print(obj_model.id)
             obj_model.save()
 
+    def do_show(self, model_name):
+        """
+        Print Instances
+        Description:
+        Show by print a string representation of an instance based
+        on the model name and id.
+        model_name (model): the model's name and id
+        """
+        if not model_name:
+            print(ERROR_CLASS_MISSING)
+            return
+
+        model = model_name.split(" ")
+
+        if model[0] not in HBNBCommand.models:
+            print(ERROR_CLASS_DOESNT_EXIST)
+
+        elif len(model) == 1:
+            print(ERROR_INSTANCE_ID_MISSING)
+
+        else:
+            all_objcts = storage.all()
+
+            for key, val in all_objcts.items():
+                ob_name = val.__class__.__name__
+                ob_id = val.id
+
+                if ob_name == model[0] and ob_id == model[1].strip('"'):
+                    print(val)
+                    return
+
+            print(ERROR_INSTANCE_NOT_FOUND)
+
     def do_destroy(self, model_name):
         """
         Delete Instance
@@ -131,39 +164,6 @@ class HBNBCommand(cmd.Cmd):
                         return
 
                 print(ERROR_INSTANCE_NOT_FOUND)
-
-    def do_show(self, model_name):
-        """
-        Print Instances
-        Description:
-        Show by print a string representation of an instance based
-        on the model name and id.
-        model_name (model): the model's name and id
-        """
-        if not model_name:
-            print(ERROR_CLASS_MISSING)
-            return
-
-        model = model_name.split(" ")
-
-        if model[0] not in HBNBCommand.models:
-            print(ERROR_CLASS_DOESNT_EXIST)
-
-        elif len(model) == 1:
-            print(ERROR_INSTANCE_ID_MISSING)
-
-        else:
-            all_objcts = storage.all()
-
-            for key, val in all_objcts.items():
-                ob_name = val.__class__.__name__
-                ob_id = val.id
-
-                if ob_name == model[0] and ob_id == model[1].strip('"'):
-                    print(val)
-                    return
-
-            print(ERROR_INSTANCE_NOT_FOUND)
 
     def do_all(self, model_name):
         """
