@@ -51,4 +51,4 @@ class FileStorage:
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as ob_fi:
                 for key, val in json.load(ob_fi).items():
-                    self.new(modls_dicts[value["__class__"]](**val))
+                    self.new(modls_dicts[val["__class__"]](**val))
