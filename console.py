@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
               "Place", "Review"]
-    cmds_names = ["create", "show", "update", "destroy", "all"]
+    cmd_names = ["create", "show", "update", "destroy", "all"]
 
     def parse_cmd_in(self, raw):
         """
@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             c = clss[1].split("(")
             args_list = c[1].split(")")
 
-            if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds_names:
+            if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmd_names:
                 raw = c[0] + " " + clss[0] + " " + args_list[0]
 
         return raw
