@@ -40,10 +40,8 @@ class HBNBCommand(cmd.Cmd):
         Description:
         Parses the command input to handle compound commands
         like "ClassName.command()".
-        Args:
         raw (str): The original input command.
-        Returns:
-        str: The modified argument.
+        Returns: The modified argument.
         """
         if "." in raw and "(" in raw and ")" in raw:
             clss = raw.split(".")
