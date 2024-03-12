@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         Returns:
         str: The modified argument.
         """
-        if "." in raw and "(" in raw_cmd and ")" in raw_cmd:
+        if "." in raw and "(" in raw and ")" in raw:
             clss = raw.split(".")
             c = clss[1].split("(")
             args_list = c[1].split(")")
