@@ -46,15 +46,15 @@ class HBNBCommand(cmd.Cmd):
         str: The modified argument.
         """
         if "." in raw and "(" in raw_cmd and ")" in raw_cmd:
-            class_c = raw.split(".")
-            c = class_c[1].split("(")
+            clss = raw.split(".")
+            c = clss[1].split("(")
             args_list = c[1].split(")")
 
-            if class_c[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds:
+            if clss[0] in HBNBCommand.models and c[0] in HBNBCommand.cmds_name:
                 # Modify the argument accordingly
-                raw = c[0] + " " + class_c[0] + " " + args_list[0]
+                raw = c[0] + " " + clss[0] + " " + args_list[0]
 
-        return raw_cmd
+        return raw
 
     def do_EOF(self, line):
         """End of file = CTRL+D to exit the program"""
