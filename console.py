@@ -4,7 +4,6 @@
 import cmd
 import json
 import shlex
-import sys
 
 from models import storage
 from models.base_model import BaseModel
@@ -28,16 +27,11 @@ ERROR_ATTRIBUTE_NAME_MISSING = "** attribute name missing **"
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand class for airbnb console"""
 
-    prompt = PROMPT if sys.__stdin__.isatty() else ''
+    prompt = PROMPT
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
               "Place", "Review"]
     cmd_names = ["create", "show", "update", "destroy", "all"]
-
-    def preloop(self):
-        """Prints if isatty is false"""
-        if not sys.__stdin__.isatty():
-            print(PROMT)
 
     def parse_cmd_in(self, raw):
         """
@@ -76,6 +70,31 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """a fun that pass if empty line is entered by user"""
         pass
+
+    def help_create(self):
+        """ Help information for the create method """
+        print("Creates a class of any type")
+        print("[Usage]: create <className>\n")
+
+    def help_show(self):
+        """ Help information for the show command """
+        print("Shows an individual instance of a class")
+        print("[Usage]: show <className> <objectId>\n")
+
+    def help_destroy(self):
+        """ Help information for the destroy command """
+        print("Destroys an individual instance of a class")
+        print("[Usage]: destroy <className> <objectId>\n")
+
+    def help_all(self):
+        """ Help information for the all command """
+        print("Shows all objects, or all of a class")
+        print("[Usage]: all <className>\n")
+
+    def help_update(self):
+        """ Help information for the update class """
+        print("Updates an object with new information")
+        print("Usage: update <className> <id> <attName> <attVal>\n")
 
     def do_create(self, model_name):
         """Usage: create <class>
