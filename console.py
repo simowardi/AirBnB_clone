@@ -4,6 +4,7 @@
 import cmd
 import json
 import shlex
+import sys
 
 from models import storage
 from models.base_model import BaseModel
@@ -27,11 +28,16 @@ ERROR_ATTRIBUTE_NAME_MISSING = "** attribute name missing **"
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand class for airbnb console"""
 
-    prompt = PROMPT
+    prompt = PROMPT if sys.__stdin__.isatty() else ''
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
               "Place", "Review"]
     cmd_names = ["create", "show", "update", "destroy", "all"]
+
+    def preloop(self):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print(PROMT)
 
     def parse_cmd_in(self, raw):
         """
