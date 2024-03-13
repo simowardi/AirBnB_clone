@@ -72,28 +72,6 @@ class HBNBCommand(cmd.Cmd):
         """a fun that pass if empty line is entered by user"""
         pass
 
-    def default(self, mod):
-        """Default behavior for cmd module when input is invalid"""
-        argdict = {
-            "all": self.do_all,
-            "show": self.do_show,
-            "destroy": self.do_destroy,
-            "count": self.do_count,
-            "update": self.do_update
-        }
-        mtch = re.search(r"\.", arg)
-        if mtch is not None:
-            mline = [mod[:mtch.span()[0]], mod[mtch.span()[1]:]]
-            mtch = re.search(r"\((.*?)\)", mline[1])
-            if mtch is not None:
-                cmnd = [mline[1][:mtch.span()[0]], mtch.group()[1:-1]]
-                if cmad[0] in argdict.keys():
-                    cl = "{} {}".format(mline[0], cmnd[1])
-                    return argdict[cmnd[0]](cl)
-
-        print("*** Unknown syntax: {}".format(mod))
-        return False
-
     def do_create(self, model_name):
         """
         Creates a new instance of a model, saves it in the
