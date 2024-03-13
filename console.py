@@ -21,9 +21,7 @@ ERROR_CLASS_DOESNT_EXIST = "** class doesn\'t exist **"
 ERROR_INSTANCE_ID_MISSING = "** instance id missing **"
 ERROR_INSTANCE_NOT_FOUND = "** no instance found **"
 ERROR_VALUE_MISSING = "** value missing **"
-ERROR_ATTRIBUTE_NAME_MISSING  = "** attribute name missing **"
-
-# need create & show & update & destroy & all
+ERROR_ATTRIBUTE_NAME_MISSING = "** attribute name missing **"
 
 
 class HBNBCommand(cmd.Cmd):
