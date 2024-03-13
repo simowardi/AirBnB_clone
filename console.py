@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
               "Place", "Review"]
-    cmd_names = ["create", "show", "update", "destroy", "all", "count"]
+    cmd_names = ["create", "show", "update", "destroy", "all"]
 
     def parse_cmd_in(self, raw):
         """
@@ -216,20 +216,6 @@ class HBNBCommand(cmd.Cmd):
                         return
 
             print(ERROR_INSTANCE_NOT_FOUND)
-
-    def do_count(self, model_name):
-        """Count current number of class instances"""
-
-        c = 0
-        all_objcts = storage.all()
-
-        for k, v in all_objs.items():
-            objcts = k.split('.')
-
-            if objcts[0] == model_name:
-                c += 1
-
-        print(c)
 
 
 if __name__ == "__main__":
