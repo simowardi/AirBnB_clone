@@ -217,6 +217,20 @@ class HBNBCommand(cmd.Cmd):
 
             print(ERROR_INSTANCE_NOT_FOUND)
 
+    def do_count(self, model_name):
+        """Count current number of class instances"""
+
+        c = 0
+        all_objcts = storage.all()
+
+        for k, v in all_objs.items():
+            objcts = k.split('.')
+
+            if objcts[0] == model_name:
+                c += 1
+
+        print(c)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
