@@ -21,6 +21,7 @@ ERROR_CLASS_DOESNT_EXIST = "** class doesn\'t exist **"
 ERROR_INSTANCE_ID_MISSING = "** instance id missing **"
 ERROR_INSTANCE_NOT_FOUND = "** no instance found **"
 ERROR_VALUE_MISSING = "** value missing **"
+ERROR_ATTRIBUTE_NAME_MISSING  = "** attribute name missing **"
 
 # need create & show & update & destroy & all
 
@@ -208,10 +209,9 @@ class HBNBCommand(cmd.Cmd):
 
                 if ob_name == model[0] and ob_id == model[1].strip('"'):
                     if len(model) == 2:
-                        print("** attribute name missing **")
+                        print(ERROR_ATTRIBUTE_NAME_MISSING)
                     elif len(model) == 3:
                         print(ERROR_VALUE_MISSING)
-
                     else:
                         setattr(val, model[2], model[3])
                         storage.save()
