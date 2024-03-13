@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
 
     models = ["BaseModel", "User", "State", "City", "Amenity",
               "Place", "Review"]
-    cmd_names = ["create", "show", "update", "destroy", "all"]
+    cmd_names = ["create", "show", "update", "destroy", "all", "count"]
 
     def parse_cmd_in(self, raw):
         """
