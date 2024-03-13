@@ -73,10 +73,9 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, model_name):
-        """
+        """Usage: create <class>
         Creates a new instance of a model, saves it in the
         JSON file, and prints its ID to the console.
-        model_name (str): the type of model to create
         """
 
         if not model_name:
@@ -93,10 +92,9 @@ class HBNBCommand(cmd.Cmd):
             obj_model.save()
 
     def do_show(self, model_name):
-        """
+        """Usage: show <class> <id> or <class>.show(<id>)
         Show by print a string representation of an instance based
         on the model name and id.
-        model_name (model): the model's name and id
         """
         if not model_name:
             print(ERROR_CLASS_MISSING)
@@ -124,11 +122,8 @@ class HBNBCommand(cmd.Cmd):
             print(ERROR_INSTANCE_NOT_FOUND)
 
     def do_destroy(self, model_name):
-        """
-        Delete Instance
-        Description:
+        """Usage: destroy <class> <id> or <class>.destroy(<id>)
         Destroy & delete an instance based model's name and id
-        model_name : the model's name and id
         """
         if not model_name:
             print(ERROR_CLASS_MISSING)
@@ -158,11 +153,10 @@ class HBNBCommand(cmd.Cmd):
             print(ERROR_INSTANCE_NOT_FOUND)
 
     def do_all(self, model_name):
-        """
+        """Usage: all or all <class> or <class>.all()
         Prints the string representation of all instances of a
         given model. In the absence of a model,
         it prints all instances of all models.
-        model_name : an optional model's name
         """
         if not model_name:
             print(ERROR_CLASS_MISSING)
@@ -185,10 +179,9 @@ class HBNBCommand(cmd.Cmd):
             print(list_objcts)
 
     def do_update(self, model_name):
-        """
+        """Usage: count <class> or <class>.count()
         Updates the attributes of an instance of a given model
         based on the model's name and id
-        model_name : the name and id of a given model
         """
         if not model_name:
             print(ERROR_CLASS_MISSING)
