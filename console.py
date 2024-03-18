@@ -232,9 +232,9 @@ class HBNBCommand(cmd.Cmd):
 
                 if ob_name == model[0] and ob_id == model[1].strip('"'):
                     if len(model) == 2:
-                        print(ERROR_ATTRIBUTE_NAME_MISSING)
+                        print("** attribute name missing **")
                     elif len(model) == 3:
-                        print(ERROR_VALUE_MISSING)
+                        print("** value missing **")
                     else:
                         setattr(val, model[2], model[3])
                         storage.save()
